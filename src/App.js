@@ -23,7 +23,8 @@ const cardImages1 = [
 ]
 
 function App() {
-
+  
+  const [activatedButton, setActivatedButton] = useState(false);
   const [images, setImages] = useState();
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
@@ -73,30 +74,30 @@ function App() {
     setTurns(prevTurns => prevTurns + 1)
   }
 
-  function closeDetails() {
-    let detail = document.getElementById('detail')
-    detail.removeAttribute("open")
-  }
-
   return (
     <div className="w-[90vw] lg:w-[80vw] mx-auto">
       <div className="flex flex-col items-center gap-4">
         <p className="text-2xl">Memory Card</p>
-        <details id="detail" className="flex flex-col gap-4">
-          <summary>Choose the theme</summary>
+        <button
+          onClick={() => setActivatedButton(true)}
+          className="btn"
+        >Select the theme</button>
+        {activatedButton ?
+          <div className="flex gap-4">
             <button
-              onClick={() => { setImages("1"); closeDetails(); }}
-              className="px-3 py-1 my-1 rounded-md text-white bg-zinc-400 cursor-pointer"
-              >Moons</button>
+              onClick={() => { setImages("1"); setActivatedButton(false); }}
+              className="btn"
+            >Moons</button>
             <button
-              onClick={() => { setImages("2"); closeDetails(); }}
-              className="px-3 py-1 my-1 rounded-md text-white bg-zinc-400 cursor-pointer"
+              onClick={() => { setImages("2"); setActivatedButton(false); }}
+              className="btn"
             >Games</button>
-        </details>
+          </div> : ""
+        }
         {images ? 
           <button
           onClick={() => images === "1" ? shuffleCards(cardImages1) : shuffleCards(cardImages)}
-          className="px-3 py-1 rounded-md text-white bg-zinc-400 cursor-pointer"
+          className="btn"
           >New Game</button> : ""}
       </div>
 
