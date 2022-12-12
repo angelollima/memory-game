@@ -12,7 +12,8 @@ function SingleCard({ card, handleChoice, flipped }) {
         <img className="front rounded-lg" src={card.src} alt="front-card" />
         <img
           className="back block rounded-lg"
-          src="/img/cover.png"
+
+          src="/img/cover.jpeg"
           alt="back-card"
           onClick={handleClick}
         />
