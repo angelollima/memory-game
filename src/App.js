@@ -79,7 +79,7 @@ function App() {
   }
 
   return (
-    <div className="w-[90vw] mx-auto">
+    <div className="w-[90vw] lg:w-[80vw] mx-auto">
       <div className="flex flex-col items-center gap-4">
         <p className="text-2xl">Memory Card</p>
         <details id="detail" className="flex flex-col gap-4">
@@ -100,7 +100,7 @@ function App() {
           >New Game</button> : ""}
       </div>
 
-      <div className="mt-4 grid grid-cols-3 lg:grid-cols-6 gap-2">
+      <div className="mt-4 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2">
         {cards.map(card => (
           <SingleCard
             key={card.id}
